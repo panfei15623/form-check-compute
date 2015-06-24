@@ -1,0 +1,125 @@
+body,html{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'microsoft yahei';
+}
+#header{
+    background-color: rgb(135,179,214);
+    overflow: hidden;
+    box-shadow:#ffffff;
+}
+#logo{
+    float:left;
+    margin-left: 30px;
+}
+#title{
+    font-size: 24px;
+    color:#ffffff;
+    vertical-align: middle;
+    display: inline-block;
+}
+#navList{
+    overflow: hidden;
+    margin-bottom: 0px;
+    padding-left: 50px;
+}
+#navList li{
+    float: left;
+    list-style-type: none;
+    width: 120px;
+    text-align: center;
+    line-height: 40px;
+}
+#navList li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 28px;
+}
+#navList li a:hover {
+    border:1px solid rgb(104,150,184);
+    border-radius: 5px;
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    background-color:rgb(104,150,184) ;
+}
+#main{
+    height:100%;
+    padding:20px 70px 10px 70px ;
+    background-color:rgb(244,244,244) ;
+}
+h4{
+    font-size: 20px;
+}
+#introduce{
+    padding-top: 10px;
+    width: 900px;
+}
+.notice{
+    font-size: 20px;
+}
+p{
+    font-size: 17px;
+    margin-bottom: 0px;
+}
+.example{
+    border:1px solid gainsboro;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+}
+/*.nt{*/
+    /*color:#2f6f9f*/
+/*}*/
+/*.na{*/
+    /*color: #4f9fcf;*/
+/*}*/
+/*.s{*/
+    /*color: #d44950;*/
+/*}*/
+/*.c{*/
+    /*color:#999;*/
+/*}*/
+nt{
+    color:#2f6f9f
+}
+na{
+    color: #4f9fcf;
+}
+ns{
+    color: #d44950;
+}
+c{
+    color:#999;
+}
+.ulList{
+    padding-top: 10px;
+    font-size: 15px;
+}
+.show-result{
+    width: 600px;
+    margin: 20px auto;
+}
+code{
+    background-color: #ffffff;
+    padding-bottom: 10px;
+}
+pre{
+    background-color: #ffffff;
+    border-style: none;
+    padding: 0px 15px 10px 15px;
+}
+hr{
+    margin: 0px;
+}
+.ex-before-text{
+    margin: 30px 0px 15px 0px;
+}
+#foot{
+    border-top: 1px solid gainsboro;
+}
+#foot{
+    padding: 20px 0px;
+    text-align:center ;
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表单验证文档</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="validate/css/common.css"/>
+    <link rel="stylesheet" href="css/checkFormDocument.css"/>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="validate/js/validation-extend.js"></script>
+</head>
+<body>
+    <header id="header">
+        <div id="logo">
+            <!--<img src="image/logo-qn.png"/>-->
+            <span id="title">青牛软件前端框架API</span>
+        </div>
+        <div id="navList">
+            <ul style="overflow: hidden;margin-bottom: 0px;">
+                <li><a href="">首页</a></li>
+                <li><a href="">表单验证</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="main">
+        <div>
+            <h1>表单验证</h1>
+            <h4>validate组件是基于jQuery的表单框架，旨在简化表单验证功能，通过定义各种验证规则实现表单的验证功能。</h4>
+        </div>
+        <div id="introduce">
+            <h3>如何使用</h3>
+            <p><span class="s notice">注意:</span>使用该组件要把validate文件夹拷贝到项目中，其中包括image、css、js子文件夹，由于本插件是基于jQuery,所以引用该插件js前一定要先引入jQuery.js</p>
+            <h3>配置</h3>
+            <p>
+            在input标签里放置placeholder属性，设置提示信息，放置validate属性，设置验证条件,validate属性里设置required,regex,equalTo,type,ajax。</p>
+            <ul class="ulList">
+                <li>required值为布尔类型，用于输入框是否必填校验</li>
+                <li>regex值为正则表达式，用于表单规则校验</li>
+                <li>equalTo值为密码输入框的id，用于确认密码的校验</li>
+                <li>type值为验证类型，如：mobile、email</li>
+                <li>ajax值为对象类型，用于用户名查重校验，其中包含url、paramName、errorMessage属性，url为请求数据的地址，paramName为地址中的参数名，errorMessage为错误信息提示。（ajax属性在需要用户名查重校验时再添加）</li>
+            </ul>
+            <div class="example">
+<pre><code>
+<span class="nt">&lt;input</span><span class="na">&nbsp;type=</span><span class="s">"name"</span><span class="na">&nbsp;placeholder=</span><span class="s">"必填，5-15位字符"</span><span class="na">&nbsp;validate=</span><span class="s">"required:true, regex:/^\w{5,15}$/, ajax:{ url:'/check', paramName:'username', errorMessage:'用户名已存在' }"</span><span class="nt">/&gt;</span>
+<span></span>
+<span class="nt">&lt;input </span><span class="na">type=</span><span class="s">"password"</span><span class="na">&nbsp;placeholder=</span><span class="s">"再次输入密码"</span><span class="na">&nbsp;validate=</span><span class="s">"required: true, equalTo:'password'"</span><span class="nt">/&gt;</span>
+<span></span>
+<span class="nt">&lt;input </span><span class="na">type=</span><span class="s">"text"</span><span class="na">&nbsp;placeholder=</span><span class="s">"必填，请输入正确的手机号码"</span><span class="na">&nbsp;validate=</span><span class="s">"required:true, type: 'mobile'"</span><span class="nt">/&gt;</span>
+</code></pre>
+            </div>
+            <h3>方法</h3>
+            <p>该组件包含initValidate和doValidate两个方法</p>
+            <ul class="ulList">
+                <li>initValidate方法用于初始化表单验证</li>
+                <li>doValidate方法用于返回验证结果，表单提交与否由用户自己定义</li>
+            </ul>
+            <p class="ex-before-text">注意：等页面加载完再调用initValidate和doValidate方法</p>
+            <div class="example">
+<pre><code>
+<span class="nt">&lt;script&gt;</span>
+   <span> $(document.ready(</span><span class="s">function</span><span>(){</span>
+     <span class="c">//初始化表单验证</span>
+     <span>$(</span><span class="s">"#myForm"</span><span>).initValidate();</span></span>
+     <span class="c">//返回校验结果，用户自定义表单提交情况</span>
+     <span>$(</span><span class="s">"#myForm"</span><span>).submit(</span><span class="nt">function</span><span>(){</span>
+       <span class="nt">if</span><span>($(</span><span class="s">"#myForm"</span><span>).doValidate()){</span>
+         <span class="c">//TODO("验证通过")</span>
+       <span>}</span><span class="nt">&nbsp;else&nbsp;</span><span>{</span>
+         <span class="c">//TODO("验证失败")</span>
+       <span>}</span>
+         <span>return false;</span>
+     <span>});</span>
+   <span>}));</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+            </div>
+         <h3>实例</h3>
+            <div class="example">
+                <div class="show-result">
+                    <form id="myForm">
+                        <table class="ks-form-table">
+                            <tbody>
+                            <tr>
+                                <td>用户名</td>
+                                <td>
+                                    <input type="name" class="ks-input" placeholder="必填，5-15位字符" validate=" required:true, regex:/^\w{5,15}$/">
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>密码</td>
+                                <td>
+                                    <input id="password" type="password" class="ks-input" placeholder="必填，5-10位字母/数字/下划线的组合" validate="required:true, regex:/[0-9a-zA-Z_]{5,10}/g">
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>确认密码</td>
+                                <td>
+                                    <input type="password" class="ks-input" placeholder="再次输入密码" validate="required: true, equalTo:'password'">
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px;">手机号码</td>
+                                <td style="width: 300px">
+                                    <input type="text" class="ks-input" placeholder="必填，请输入正确的手机号码" validate=" required:true, type: 'mobile'">
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>邮箱</td>
+                                <td>
+                                    <input  type="text" class="ks-input" placeholder="必填，请输入正确的邮箱地址" validate="required:true, type:'email'">
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><button  type="submit" class="ks-button large primary">提交</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <script>
+                    $("#myForm").initValidate();
+                    $("#myForm").submit(function(){
+                        if($("#myForm").doValidate()){
+                            console.log("验证通过");
+                        } else{
+                            console.log("验证失败");
+                        }
+                        return false;
+                    })
+                </script>
+                <hr/>
+<pre><code>
+<span style="font-size: 16px;display: inline-block;">HTML代码</span>
+<span class="nt">&lt;div</span><span class="na">&nbsp;id=</span><span class="s">"myForm"</span><span class="nt">&gt;</span>
+  <span class="nt"><</span><span class="nt">table</span><span class="na">&nbsp;class=</span><span class="s">"ks-form-table"</span><span class="nt">&gt</span>
+    <span class="nt">&lt;tbody&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span>用户名</span><span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>
+          <span class="nt">&lt;input </span><span class="na">type=</span><span class="s">"name"</span><span class="na">&nbsp;placeholder=</span><span class="s">"必填，5-15位字符"</span><span class="na">&nbsp;validate=</span><span class="s">"required:true, regex:/^\w{5,15}$/, ajax:{ url:'/check',paramName:'username', errorMessage:'用户名已存在'}"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span>密码</span><span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>
+          <span class="nt">&lt;input</span><span class="na">&nbsp;id=</span><span class="s">"password"</span><span class="na">&nbsp;type=</span><span class="s">"password"</span><span class="na">&nbsp;placeholder=</span><span class="s">"必填，5-10位字母/数字/下划线的组合"</span><span class="na">&nbsp;validate=</span><span class="s">"required:true, regex:/[0-9a-zA-Z_]{5,10}/g"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span>确认密码</span><span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>
+          <span class="nt">&lt;input </span><span class="na">type=</span><span class="s">"password"</span><span class="na">&nbsp;placeholder=</span><span class="s">"再次输入密码"</span><span class="na">&nbsp;validate=</span><span class="s">"required: true, equalTo:'password'"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span>手机号码</span><span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>
+          <span class="nt">&lt;input </span><span class="na">type=</span><span class="s">"text"</span><span class="na">&nbsp;placeholder=</span><span class="s">"必填，请输入正确的手机号码"</span><span class="na">&nbsp;validate=</span><span class="s">"required:true, type: 'mobile'"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span>邮箱</span><span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>
+          <span class="nt">&lt;input </span><span class="na">type=</span><span class="s">"text"</span><span class="na">&nbsp;placeholder=</span><span class="s">"必填，请输入正确的邮箱地址"</span><span class="na">&nbsp;validate=</span><span class="s">"required:true, type:'email'"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>
+          <span class="nt">&lt;button</span><span class="na">&nbsp;type=</span><span class="s">"submit"</span><span class="na">&nbsp;class=</span><span class="s">"ks-button large primary"</span><span><span class="nt">&gt;</span>提交</span><span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span style="font-size: 16px;display: inline-block;margin-top: 15px">JS代码</span>
+    <span class="nt">&lt;script&gt;</span>
+      <span> $(document.ready(</span><span class="s">function</span><span>(){</span>
+         <span class="c">//执行表单校验</span>
+         <span>$(</span><span class="s">"#myForm"</span><span>).initValidate();</span></span>
+         <span class="c">//返回校验结果，用户自定义表单提交情况</span>
+         <span>$(</span><span class="s">"#myForm"</span><span>).submit(</span><span class="nt">function</span><span>(){</span>
+           <span class="nt">if</span><span>($(</span><span class="s">"#myForm"</span><span>).doValidate()){</span>
+             <span class="nt">console.log</span><span>("验证通过"); </span>
+           <span>}</span><span class="nt">&nbsp;else&nbsp;</span><span>{</span>
+             <span class="nt">console.log</span><span>("验证失败"); </span>
+           <span>}</span>
+             <span>return false;</span>
+         <span>});</span></span>
+       <span>}));</span>
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <div id="foot">
+        <span class="foot-text">Designed and bulit on 2015-4-2 @qingniuruanjian</span>
+    </div>
+</body>
+</html>

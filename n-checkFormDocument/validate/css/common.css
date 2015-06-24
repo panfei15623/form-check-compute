@@ -1,0 +1,352 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei";
+    background-color: #eeeeee;
+}
+
+/* Layout */
+
+.ks-header {
+    height: 60px;
+    background-color: #212530;
+    line-height: 60px;
+    padding-left: 20px;
+}
+
+.ks-header-sub {
+    height: 40px;
+    position: absolute;
+    left: 250px;
+    right: 0;
+    top: 60px;
+    background-color: #fff;
+    line-height: 40px;
+    text-align: right;
+    padding: 0 2em;
+}
+
+.ks-left {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    bottom: 0;
+    background-color: #212530;
+}
+
+.ks-main {
+    position: absolute;
+    top: 102px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    background-color: #eeeeee;
+    overflow: hidden;
+}
+
+.ks-main iframe {
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ks-footer {
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    bottom: 0;
+    background-color: #333333;
+    color: #ffffff;
+    line-height: 50px;
+    text-align: center;
+}
+
+/* Menu */
+
+.ks-menu-fixed {
+    background-color: #161924;
+    color: #ffffff;
+    padding: 10px 1em;
+    border-top: 1px solid #000000;
+    font-size: 15px;
+}
+
+.ks-menu-parent {
+    padding: 10px 2em;
+    border-bottom: 1px solid #444444;
+    color: #cccccc;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.ks-menu-child {
+    padding: 10px 3em;
+    background-color: #2A303E;
+    border-bottom: 1px solid #444444;
+    border-left: 5px solid transparent;
+}
+
+.ks-menu-child a {
+    color: #aaaaaa;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}
+
+.ks-menu-child a:hover {
+    color: #5CB5F1;
+}
+
+.ks-menu-child.selected {
+    border-left: 5px solid #5CB5F1;
+}
+
+.ks-menu-child.selected a {
+    color: #5CB5F1;
+}
+
+/* Button */
+
+.ks-button {
+    padding: 5px 15px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    color: #ffffff;
+}
+
+.ks-button.block {
+    display: block;
+    width: 100%;
+}
+
+.ks-button.primary {
+    background-color: #33A0E5;
+    color: #ffffff;
+}
+
+.ks-button.primary:not(:disabled):hover {
+    background-color: #44B1F6;
+}
+
+.ks-button.slave {
+    background-color: #cccccc;
+    color: #000000;
+}
+
+.ks-button.danger {
+    background-color: #FC504E;
+}
+
+.ks-button.danger:not(:disabled):hover {
+    background-color: #FF615F;
+}
+
+.ks-button.success {
+    background-color: #5DB513;
+}
+
+.ks-button.success:not(:disabled):hover {
+    background-color: #6EC624;
+}
+
+.ks-button[disabled] {
+    background-color: #cccccc;
+    color: #eeeeee;
+}
+
+.ks-button.large {
+    padding: 12px 30px;
+    font-size: 16px;
+}
+
+/* Button Group */
+
+.ks-button-group {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.ks-button-group > span {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+}
+
+.ks-button-group > span.primary {
+    background-color: #33A0E5;
+    color: #ffffff;
+}
+
+.ks-button-group > span.slave {
+    background-color: #ffffff;
+    color: #33A0E5;
+    border-bottom: 1px solid #aaaaaa;
+}
+
+/* Table */
+
+.ks-table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #F8F9FA;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.ks-table > thead > tr {
+    background-color: #2A303E;
+}
+
+.ks-table th, .ks-table td {
+    text-align: center;
+    padding: 8px;
+}
+
+.ks-table th {
+    color: #ffffff;
+    font-weight: normal;
+}
+
+.ks-table td {
+    border: 1px solid #cccccc;
+    color: #000000;
+}
+
+/* Input */
+.ks-input {
+    display: block;
+    width: 100%;
+    border: 1px solid #DFDFDF;
+    padding: 8px;
+    outline: 0;
+}
+
+.ks-input.inline {
+    display: inline;
+    width: auto;
+}
+
+.ks-input.danger {
+    border-color: #FC504E;
+}
+
+.ks-input.success {
+    border-color: #5DB513;
+}
+
+.ks-input:focus {
+    border-color: #33A0E5;
+}
+
+/* Form Panel */
+.ks-form {
+    margin: 20px auto;
+    width: 50%;
+}
+
+.ks-form > .ks-form-header {
+    background-color: #2A303E;
+    color: #ffffff;
+    padding: 10px 20px;
+}
+
+.ks-form > .ks-form-content {
+    border: 1px solid #cccccc;
+    background-color: #fff;
+    padding: 15px 0;
+}
+
+/* Form Table */
+.ks-form-table {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.ks-form-table td {
+    padding: 8px;
+}
+
+.ks-form-table tr > td:first-child {
+    text-align: right;
+}
+
+/* Pager */
+.ks-pager {
+
+}
+
+.ks-pager > input {
+    width: 40px;
+    text-align: center;
+    padding: 4px;
+    border: 1px solid #33A0E5;
+    outline: 0;
+}
+
+/* Colors */
+.ks-blue {
+    color: #33A0E5;
+}
+
+.ks-red {
+    color: #FC504E;
+}
+
+.ks-green {
+    color: #5DB513;
+}
+
+/* DropDown Menu */
+.ks-dropdown-menu {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 100px;
+    background-color: #2A303E;
+    z-index: 100;
+    text-align: center;
+    display: none;
+}
+
+.ks-dropdown-item {
+    padding: 5px 0;
+}
+
+.ks-dropdown-item > a {
+    color: #cccccc;
+}
+
+/* Search bar */
+ul.search-bar {
+    list-style: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.search-bar > li {
+    float: left;
+    margin-right: 1em;
+}
+
+/* Tip */
+.ks-tip {
+    margin: 0;
+}
+.warning-image{
+    background-image: url(../image/warning.png);
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+}
+.ok-image{
+    background-image: url(../image/ok.png);
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+}
